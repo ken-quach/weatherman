@@ -1,0 +1,19 @@
+version: 2
+
+sources:
+  - name: weather_raw
+    schema: weather_raw
+    tables:
+      - name: weather_hourly
+        loaded_at_field: _dlt_load_id::float64
+        # dlt load ids are unix timestamps; swap for a real freshness check if you like
+
+models:
+  - name: stg_weather_hourly
+    columns:
+      - name: observation_key
+        tests: [not_null, unique]
+      - name: city
+        tests: [not_null]
+      - name: observed_at
+        tests: [not_null]

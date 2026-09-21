@@ -1,0 +1,10 @@
+weather:
+  target: dev
+  outputs:
+    dev:
+      type: bigquery
+      method: oauth            # uses application-default credentials (local + CI)
+      project: "{{ env_var('GCP_PROJECT_ID') }}"
+      dataset: weather_analytics
+      location: US
+      threads: 4
