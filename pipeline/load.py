@@ -43,7 +43,7 @@ def weather_hourly():
 if __name__ == "__main__":
     pipeline = dlt.pipeline(
         pipeline_name="weather",
-        destination="duckdb",
+        destination="bigquery",
         dataset_name="weather_raw",
     )
     print(pipeline.run(weather_hourly()))

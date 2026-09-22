@@ -5,7 +5,6 @@ sources:
     schema: weather_raw
     tables:
       - name: weather_hourly
-        loaded_at_field: _dlt_load_id::float64
         # dlt load ids are unix timestamps; swap for a real freshness check if you like
 
 models:
