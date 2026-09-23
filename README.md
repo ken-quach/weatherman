@@ -1,25 +1,162 @@
 # Weather ELT Pipeline
 
-Open-Meteo API → dlt → BigQuery → dbt, scheduled daily with GitHub Actions.
+An automated ELT pipeline that extracts weather data from the Open-Meteo API, loads it into Google BigQuery, transforms the raw data using dbt, and runs daily through GitHub Actions.
 
-## Problem
-(One paragraph: what this demonstrates and why.)
+## Why I Built This
+
+I built this project to practice designing an end-to-end cloud data pipeline and gain hands-on experience with tools commonly used in modern data engineering.
+
+Rather than simply pulling data from an API, I wanted to build a pipeline that separates ingestion, storage, transformation, testing, and orchestration into distinct components.
+
+The project gave me practical experience working with API ingestion, cloud data warehousing, ELT architecture, dbt transformations, data quality testing, and automated workflows.
 
 ## Architecture
-(Add a diagram here: API → dlt (merge on city+time) → weather_raw → dbt staging → mart → dashboard)
 
-## Tech choices
-- dlt: schema inference and idempotent merge loads
-- BigQuery: free tier, marketable warehouse
-- dbt: tested, versioned transformations
-- GitHub Actions: zero-server orchestration
+```text
+Open-Meteo API
+       │
+       ▼
+ Python + dlt
+       │
+       ▼
+BigQuery Raw Layer
+       │
+       ▼
+      dbt
+       │
+   ┌───┴────┐
+   ▼        ▼
+Staging    Mart
+             │
+             ▼
+      Analytics-ready data
 
-## Run it
-1. Create a GCP project and service account (BigQuery Data Editor + Job User)
-2. Add repo secrets: `GCP_PROJECT_ID`, `GCP_SA_KEY` (the JSON key)
-3. Locally: `pip install -r requirements.txt`, `gcloud auth application-default login`,
-   `export GCP_PROJECT_ID=...`, `python pipeline/load.py`, then
-   `DBT_PROFILES_DIR=dbt_project dbt build --project-dir dbt_project`
+GitHub Actions → runs pipeline daily
+```
 
-## Dashboard
-(Link to Tableau Public / Looker Studio)
+### Data Flow
+
+1. Weather data is retrieved from the Open-Meteo API.
+2. `dlt` handles schema inference and loads the API data into BigQuery.
+3. Records are merged using city and timestamp to make repeated pipeline runs idempotent.
+4. dbt transforms the raw data into cleaned staging models.
+5. Mart models create analytics-ready datasets.
+6. dbt tests validate the transformed data.
+7. GitHub Actions automatically executes the pipeline each day.
+
+## Tech Stack
+
+| Technology      | Purpose                               |
+| --------------- | ------------------------------------- |
+| Python          | Pipeline development                  |
+| Open-Meteo API  | Weather data source                   |
+| dlt             | Data ingestion and loading            |
+| Google BigQuery | Cloud data warehouse                  |
+| dbt             | SQL transformations and data testing  |
+| GitHub Actions  | Pipeline orchestration and scheduling |
+| Git/GitHub      | Version control                       |
+
+## Project Structure
+
+```text
+weatherman/
+├── .github/
+│   └── workflows/       # Automated pipeline workflow
+├── pipeline/            # Python ingestion pipeline
+├── dbt_project/         # dbt transformations and tests
+├── requirements.txt     # Python dependencies
+├── .gitignore
+└── README.md
+```
+
+## Key Engineering Concepts
+
+This project demonstrates:
+
+* ELT pipeline architecture
+* REST API ingestion
+* Cloud data warehousing
+* Incremental/idempotent data loading
+* Dimensional data transformation
+* Data quality testing
+* Environment and secret management
+* Automated pipeline orchestration
+* Version-controlled analytics engineering
+
+## Running Locally
+
+### 1. Clone the repository
+
+```bash
+git clone <repository-url>
+cd weatherman
+```
+
+### 2. Create a virtual environment
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+```
+
+### 3. Install dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### 4. Configure Google Cloud authentication
+
+Create a Google Cloud project and service account with the appropriate BigQuery permissions.
+
+Set the project:
+
+```bash
+export GCP_PROJECT_ID="your-project-id"
+```
+
+Authenticate locally:
+
+```bash
+gcloud auth application-default login
+```
+
+### 5. Run ingestion
+
+```bash
+python pipeline/load.py
+```
+
+### 6. Run dbt
+
+```bash
+DBT_PROFILES_DIR=dbt_project dbt build --project-dir dbt_project
+```
+
+## Automation
+
+The pipeline is scheduled using GitHub Actions.
+
+Repository secrets are used to securely provide Google Cloud credentials without committing credentials to source control.
+
+The automated workflow performs the ingestion and transformation process so the warehouse remains updated without requiring manual execution.
+
+## What I Learned
+
+This project helped me understand how the individual pieces of a data pipeline work together.
+
+In particular, I gained hands-on experience separating raw ingestion from downstream transformations, designing repeatable data loads, managing cloud credentials securely, testing transformed data with dbt, and automating pipelines using GitHub Actions.
+
+It also helped bridge the gap between working with data as an analyst and thinking about how reliable data infrastructure is designed and maintained.
+
+## Future Improvements
+
+Potential improvements include:
+
+* Additional weather locations and metrics
+* Pipeline monitoring and alerting
+* Expanded dbt data quality tests
+* Historical weather analysis
+* BI dashboard integration
+* CI validation for dbt models
+
