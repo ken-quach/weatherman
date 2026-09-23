@@ -1,6 +1,6 @@
 # Weather ELT Pipeline
 
-An automated ELT pipeline that extracts weather data from the Open-Meteo API, loads it into Google BigQuery, transforms the raw data using dbt, and runs daily through GitHub Actions.
+An automated ELT pipeline that extracts weather data from the Open-Meteo API, loads it into Google BigQuery, transforms the raw data using dbt.
 
 ## Why I Built This
 
@@ -31,7 +31,6 @@ Staging    Mart
              ▼
       Analytics-ready data
 
-GitHub Actions → runs pipeline daily
 ```
 
 ### Data Flow
@@ -42,7 +41,6 @@ GitHub Actions → runs pipeline daily
 4. dbt transforms the raw data into cleaned staging models.
 5. Mart models create analytics-ready datasets.
 6. dbt tests validate the transformed data.
-7. GitHub Actions automatically executes the pipeline each day.
 
 ## Tech Stack
 
@@ -53,7 +51,6 @@ GitHub Actions → runs pipeline daily
 | dlt             | Data ingestion and loading            |
 | Google BigQuery | Cloud data warehouse                  |
 | dbt             | SQL transformations and data testing  |
-| GitHub Actions  | Pipeline orchestration and scheduling |
 | Git/GitHub      | Version control                       |
 
 ## Project Structure
@@ -133,30 +130,12 @@ python pipeline/load.py
 DBT_PROFILES_DIR=dbt_project dbt build --project-dir dbt_project
 ```
 
-## Automation
 
-The pipeline is scheduled using GitHub Actions.
-
-Repository secrets are used to securely provide Google Cloud credentials without committing credentials to source control.
-
-The automated workflow performs the ingestion and transformation process so the warehouse remains updated without requiring manual execution.
 
 ## What I Learned
 
 This project helped me understand how the individual pieces of a data pipeline work together.
 
-In particular, I gained hands-on experience separating raw ingestion from downstream transformations, designing repeatable data loads, managing cloud credentials securely, testing transformed data with dbt, and automating pipelines using GitHub Actions.
+In particular, I gained hands-on experience separating raw ingestion from downstream transformations, designing repeatable data loads, managing cloud credentials securely, testing transformed data with dbt.
 
 It also helped bridge the gap between working with data as an analyst and thinking about how reliable data infrastructure is designed and maintained.
-
-## Future Improvements
-
-Potential improvements include:
-
-* Additional weather locations and metrics
-* Pipeline monitoring and alerting
-* Expanded dbt data quality tests
-* Historical weather analysis
-* BI dashboard integration
-* CI validation for dbt models
-
