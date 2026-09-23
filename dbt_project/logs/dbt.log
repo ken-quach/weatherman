@@ -1,0 +1,287 @@
+[0m08:47:41.288979 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x108ddda00>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x108ef8d10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x108ef8a40>]}
+
+
+============================== 08:47:41.293078 | 22df7766-2342-430d-b4d3-77ce92ed70b3 ==============================
+[0m08:47:41.293078 [info ] [MainThread]: Running with dbt=1.12.5
+[0m08:47:41.293412 [debug] [MainThread]: running dbt with arguments {'log_cache_events': 'False', 'log_format': 'default', 'empty': 'False', 'invocation_command': 'dbt build --project-dir dbt_project', 'target_path': 'None', 'introspect': 'True', 'profiles_dir': 'dbt_project', 'static_parser': 'True', 'send_anonymous_usage_stats': 'True', 'use_experimental_parser': 'False', 'log_path': 'dbt_project/logs', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'version_check': 'True', 'use_colors': 'True', 'quiet': 'False', 'indirect_selection': 'eager', 'cache_selected_only': 'False', 'no_print': 'None', 'hints_enabled': 'True', 'warn_error': 'None', 'debug': 'False', 'printer_width': '80', 'write_json': 'True', 'partial_parse': 'True', 'fail_fast': 'False', 'maximum_seed_size_mib': '1'}
+[0m08:47:43.465148 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '22df7766-2342-430d-b4d3-77ce92ed70b3', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x11ee47f20>]}
+[0m08:47:43.510309 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '22df7766-2342-430d-b4d3-77ce92ed70b3', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x11b92ce00>]}
+[0m08:47:43.510861 [info ] [MainThread]: Registered adapter: bigquery=1.12.1
+[0m08:47:43.776827 [debug] [MainThread]: checksum: afd20fbb4d06d62f3d6b74dcf1323d861272964b952c4e208b6d9abde9858694, vars: {}, profile: weather, target: dev, version: 1.12.5
+[0m08:47:43.777423 [info ] [MainThread]: Unable to do partial parsing because saved manifest not found. Starting full parse.
+[0m08:47:43.777683 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'partial_parser', 'label': '22df7766-2342-430d-b4d3-77ce92ed70b3', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x11d44b140>]}
+[0m08:47:44.806000 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '22df7766-2342-430d-b4d3-77ce92ed70b3', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x11f6558b0>]}
+[0m08:47:44.879221 [debug] [MainThread]: Wrote artifact WritableManifest to dbt_project/target/manifest.json
+[0m08:47:44.883652 [debug] [MainThread]: Wrote artifact SemanticManifest to dbt_project/target/semantic_manifest.json
+[0m08:47:44.898925 [debug] [MainThread]: Wrote artifact OsiDocument to dbt_project/target/osi_document.json
+[0m08:47:44.915926 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '22df7766-2342-430d-b4d3-77ce92ed70b3', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x11f46bb00>]}
+[0m08:47:44.916247 [info ] [MainThread]: Found 2 models, 4 data tests, 1 source, 561 macros
+[0m08:47:44.917379 [info ] [MainThread]: 
+[0m08:47:44.917578 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
+[0m08:47:44.917722 [info ] [MainThread]: 
+[0m08:47:44.917999 [debug] [MainThread]: Acquiring new bigquery connection 'master'
+[0m08:47:44.920342 [debug] [ThreadPool]: Acquiring new bigquery connection 'list_weatherman-509317'
+[0m08:47:44.920615 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m08:47:45.925126 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_weatherman-509317, now create_weatherman-509317_weather_analytics)
+[0m08:47:45.926441 [debug] [ThreadPool]: Creating schema "database: "weatherman-509317"
+schema: "weather_analytics"
+"
+[0m08:47:45.938734 [debug] [ThreadPool]: On create_weatherman-509317_weather_analytics: /* {"app": "dbt", "dbt_version": "1.12.5", "profile_name": "weather", "target_name": "dev", "connection_name": "create_weatherman-509317_weather_analytics"} */
+create schema if not exists `weatherman-509317`.`weather_analytics`
+  
+[0m08:47:45.939394 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m08:47:46.369806 [debug] [ThreadPool]: BigQuery adapter: https://console.cloud.google.com/bigquery?project=weatherman-509317&j=bq:US:e6aea820-eeb8-4aa6-b2af-966ad996f92d&page=queryresults
+[0m08:47:47.116962 [debug] [ThreadPool]: SQL status: OK in 0.746 seconds
+[0m08:47:47.173520 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly create_weatherman-509317_weather_analytics, now list_weatherman-509317_weather_analytics)
+[0m08:47:47.173857 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m08:47:47.765605 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '22df7766-2342-430d-b4d3-77ce92ed70b3', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1062457f0>]}
+[0m08:47:47.766621 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m08:47:47.771289 [debug] [Thread-1 (]: Began running node model.weather.stg_weather_hourly
+[0m08:47:47.771670 [info ] [Thread-1 (]: 1 of 6 START sql view model weather_analytics.stg_weather_hourly ............... [RUN]
+[0m08:47:47.772195 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list_weatherman-509317_weather_analytics, now model.weather.stg_weather_hourly)
+[0m08:47:47.772487 [debug] [Thread-1 (]: Began compiling node model.weather.stg_weather_hourly
+[0m08:47:47.776295 [debug] [Thread-1 (]: Writing injected SQL for node "model.weather.stg_weather_hourly"
+[0m08:47:47.777010 [debug] [Thread-1 (]: Began executing node model.weather.stg_weather_hourly
+[0m08:47:47.799533 [debug] [Thread-1 (]: Writing runtime sql for node "model.weather.stg_weather_hourly"
+[0m08:47:47.800402 [debug] [Thread-1 (]: On model.weather.stg_weather_hourly: /* {"app": "dbt", "dbt_version": "1.12.5", "profile_name": "weather", "target_name": "dev", "node_id": "model.weather.stg_weather_hourly"} */
+
+
+  create or replace view `weatherman-509317`.`weather_analytics`.`stg_weather_hourly`
+  OPTIONS()
+  as select
+    concat(city, '|', cast(time as string)) as observation_key,
+    city,
+    cast(time as timestamp) as observed_at,
+    temperature_c,
+    precipitation_mm,
+    wind_speed_kmh
+from `weatherman-509317`.`weather_raw`.`weather_hourly`;
+
+
+[0m08:47:47.800752 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m08:47:48.510689 [debug] [Thread-1 (]: BigQuery adapter: https://console.cloud.google.com/bigquery?project=weatherman-509317&j=bq:US:80fe7f56-1c7e-49c8-a052-af6016c5b3ab&page=queryresults
+[0m08:47:49.021567 [debug] [Thread-1 (]: SQL status: OK in 0.510 seconds
+[0m08:47:49.050143 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '22df7766-2342-430d-b4d3-77ce92ed70b3', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x11ee042c0>]}
+[0m08:47:49.050938 [info ] [Thread-1 (]: 1 of 6 OK created sql view model weather_analytics.stg_weather_hourly .......... [[32mCREATE VIEW (0 processed)[0m in 1.28s]
+[0m08:47:49.051487 [debug] [Thread-1 (]: Finished running node model.weather.stg_weather_hourly
+[0m08:47:49.052363 [debug] [Thread-3 (]: Began running node test.weather.not_null_stg_weather_hourly_city.45f7d39d17
+[0m08:47:49.052740 [info ] [Thread-3 (]: 2 of 6 START test not_null_stg_weather_hourly_city ............................. [RUN]
+[0m08:47:49.053238 [debug] [Thread-3 (]: Acquiring new bigquery connection 'test.weather.not_null_stg_weather_hourly_city.45f7d39d17'
+[0m08:47:49.053547 [debug] [Thread-4 (]: Began running node test.weather.not_null_stg_weather_hourly_observation_key.814aadb9fe
+[0m08:47:49.053799 [debug] [Thread-3 (]: Began compiling node test.weather.not_null_stg_weather_hourly_city.45f7d39d17
+[0m08:47:49.054055 [debug] [Thread-2 (]: Began running node test.weather.not_null_stg_weather_hourly_observed_at.02b583ff1f
+[0m08:47:49.054346 [debug] [Thread-1 (]: Began running node test.weather.unique_stg_weather_hourly_observation_key.0809c5793e
+[0m08:47:49.054681 [info ] [Thread-4 (]: 3 of 6 START test not_null_stg_weather_hourly_observation_key .................. [RUN]
+[0m08:47:49.066847 [debug] [Thread-3 (]: Writing injected SQL for node "test.weather.not_null_stg_weather_hourly_city.45f7d39d17"
+[0m08:47:49.067158 [info ] [Thread-2 (]: 4 of 6 START test not_null_stg_weather_hourly_observed_at ...................... [RUN]
+[0m08:47:49.067444 [info ] [Thread-1 (]: 5 of 6 START test unique_stg_weather_hourly_observation_key .................... [RUN]
+[0m08:47:49.067788 [debug] [Thread-4 (]: Acquiring new bigquery connection 'test.weather.not_null_stg_weather_hourly_observation_key.814aadb9fe'
+[0m08:47:49.068212 [debug] [Thread-2 (]: Acquiring new bigquery connection 'test.weather.not_null_stg_weather_hourly_observed_at.02b583ff1f'
+[0m08:47:49.068514 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.weather.stg_weather_hourly, now test.weather.unique_stg_weather_hourly_observation_key.0809c5793e)
+[0m08:47:49.068744 [debug] [Thread-4 (]: Began compiling node test.weather.not_null_stg_weather_hourly_observation_key.814aadb9fe
+[0m08:47:49.068988 [debug] [Thread-2 (]: Began compiling node test.weather.not_null_stg_weather_hourly_observed_at.02b583ff1f
+[0m08:47:49.069195 [debug] [Thread-1 (]: Began compiling node test.weather.unique_stg_weather_hourly_observation_key.0809c5793e
+[0m08:47:49.069421 [debug] [Thread-3 (]: Began executing node test.weather.not_null_stg_weather_hourly_city.45f7d39d17
+[0m08:47:49.074356 [debug] [Thread-4 (]: Writing injected SQL for node "test.weather.not_null_stg_weather_hourly_observation_key.814aadb9fe"
+[0m08:47:49.079165 [debug] [Thread-2 (]: Writing injected SQL for node "test.weather.not_null_stg_weather_hourly_observed_at.02b583ff1f"
+[0m08:47:49.084576 [debug] [Thread-1 (]: Writing injected SQL for node "test.weather.unique_stg_weather_hourly_observation_key.0809c5793e"
+[0m08:47:49.095017 [debug] [Thread-3 (]: Writing runtime sql for node "test.weather.not_null_stg_weather_hourly_city.45f7d39d17"
+[0m08:47:49.095594 [debug] [Thread-1 (]: Began executing node test.weather.unique_stg_weather_hourly_observation_key.0809c5793e
+[0m08:47:49.095802 [debug] [Thread-2 (]: Began executing node test.weather.not_null_stg_weather_hourly_observed_at.02b583ff1f
+[0m08:47:49.096900 [debug] [Thread-1 (]: Writing runtime sql for node "test.weather.unique_stg_weather_hourly_observation_key.0809c5793e"
+[0m08:47:49.097154 [debug] [Thread-4 (]: Began executing node test.weather.not_null_stg_weather_hourly_observation_key.814aadb9fe
+[0m08:47:49.098217 [debug] [Thread-2 (]: Writing runtime sql for node "test.weather.not_null_stg_weather_hourly_observed_at.02b583ff1f"
+[0m08:47:49.098472 [debug] [Thread-3 (]: On test.weather.not_null_stg_weather_hourly_city.45f7d39d17: /* {"app": "dbt", "dbt_version": "1.12.5", "profile_name": "weather", "target_name": "dev", "node_id": "test.weather.not_null_stg_weather_hourly_city.45f7d39d17"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select city
+from `weatherman-509317`.`weather_analytics`.`stg_weather_hourly`
+where city is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m08:47:49.099588 [debug] [Thread-4 (]: Writing runtime sql for node "test.weather.not_null_stg_weather_hourly_observation_key.814aadb9fe"
+[0m08:47:49.099959 [debug] [Thread-3 (]: Opening a new connection, currently in state init
+[0m08:47:49.100536 [debug] [Thread-1 (]: On test.weather.unique_stg_weather_hourly_observation_key.0809c5793e: /* {"app": "dbt", "dbt_version": "1.12.5", "profile_name": "weather", "target_name": "dev", "node_id": "test.weather.unique_stg_weather_hourly_observation_key.0809c5793e"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+with dbt_test__target as (
+
+  select observation_key as unique_field
+  from `weatherman-509317`.`weather_analytics`.`stg_weather_hourly`
+  where observation_key is not null
+
+)
+
+select
+    unique_field,
+    count(*) as n_records
+
+from dbt_test__target
+group by unique_field
+having count(*) > 1
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m08:47:49.101084 [debug] [Thread-4 (]: On test.weather.not_null_stg_weather_hourly_observation_key.814aadb9fe: /* {"app": "dbt", "dbt_version": "1.12.5", "profile_name": "weather", "target_name": "dev", "node_id": "test.weather.not_null_stg_weather_hourly_observation_key.814aadb9fe"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select observation_key
+from `weatherman-509317`.`weather_analytics`.`stg_weather_hourly`
+where observation_key is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m08:47:49.101373 [debug] [Thread-2 (]: On test.weather.not_null_stg_weather_hourly_observed_at.02b583ff1f: /* {"app": "dbt", "dbt_version": "1.12.5", "profile_name": "weather", "target_name": "dev", "node_id": "test.weather.not_null_stg_weather_hourly_observed_at.02b583ff1f"} */
+
+    
+    select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+  
+    
+    
+
+
+
+select observed_at
+from `weatherman-509317`.`weather_analytics`.`stg_weather_hourly`
+where observed_at is null
+
+
+
+  
+  
+      
+    ) dbt_internal_test
+[0m08:47:49.101569 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m08:47:49.101769 [debug] [Thread-4 (]: Opening a new connection, currently in state init
+[0m08:47:49.102072 [debug] [Thread-2 (]: Opening a new connection, currently in state init
+[0m08:47:49.942847 [debug] [Thread-3 (]: BigQuery adapter: https://console.cloud.google.com/bigquery?project=weatherman-509317&j=bq:US:c016a045-4252-475b-ba5f-bd781baea41b&page=queryresults
+[0m08:47:49.943959 [debug] [Thread-1 (]: BigQuery adapter: https://console.cloud.google.com/bigquery?project=weatherman-509317&j=bq:US:9e348a8a-7c13-4658-b985-c0648c6e75c7&page=queryresults
+[0m08:47:49.946134 [debug] [Thread-2 (]: BigQuery adapter: https://console.cloud.google.com/bigquery?project=weatherman-509317&j=bq:US:0450bcb0-e141-41f6-b23e-b008b7f12f73&page=queryresults
+[0m08:47:49.946750 [debug] [Thread-4 (]: BigQuery adapter: https://console.cloud.google.com/bigquery?project=weatherman-509317&j=bq:US:0a9d2378-8aae-4d0a-83d0-f5f3542f7cd1&page=queryresults
+[0m08:47:50.115451 [debug] [Thread-3 (]: SQL status: OK in 0.170 seconds
+[0m08:47:50.119817 [debug] [Thread-4 (]: SQL status: OK in 0.172 seconds
+[0m08:47:50.121939 [debug] [Thread-1 (]: SQL status: OK in 0.177 seconds
+[0m08:47:50.123064 [debug] [Thread-2 (]: SQL status: OK in 0.176 seconds
+[0m08:47:50.482716 [info ] [Thread-1 (]: 5 of 6 PASS unique_stg_weather_hourly_observation_key .......................... [[32mPASS[0m in 1.41s]
+[0m08:47:50.483782 [debug] [Thread-1 (]: Finished running node test.weather.unique_stg_weather_hourly_observation_key.0809c5793e
+[0m08:47:50.491933 [info ] [Thread-2 (]: 4 of 6 PASS not_null_stg_weather_hourly_observed_at ............................ [[32mPASS[0m in 1.42s]
+[0m08:47:50.492765 [debug] [Thread-2 (]: Finished running node test.weather.not_null_stg_weather_hourly_observed_at.02b583ff1f
+[0m08:47:50.498679 [info ] [Thread-3 (]: 2 of 6 PASS not_null_stg_weather_hourly_city ................................... [[32mPASS[0m in 1.45s]
+[0m08:47:50.499535 [debug] [Thread-3 (]: Finished running node test.weather.not_null_stg_weather_hourly_city.45f7d39d17
+[0m08:47:50.639250 [info ] [Thread-4 (]: 3 of 6 PASS not_null_stg_weather_hourly_observation_key ........................ [[32mPASS[0m in 1.57s]
+[0m08:47:50.640637 [debug] [Thread-4 (]: Finished running node test.weather.not_null_stg_weather_hourly_observation_key.814aadb9fe
+[0m08:47:50.641743 [debug] [Thread-1 (]: Began running node model.weather.daily_weather
+[0m08:47:50.642321 [info ] [Thread-1 (]: 6 of 6 START sql table model weather_analytics.daily_weather ................... [RUN]
+[0m08:47:50.642751 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.weather.unique_stg_weather_hourly_observation_key.0809c5793e, now model.weather.daily_weather)
+[0m08:47:50.643039 [debug] [Thread-1 (]: Began compiling node model.weather.daily_weather
+[0m08:47:50.644507 [debug] [Thread-1 (]: Writing injected SQL for node "model.weather.daily_weather"
+[0m08:47:50.645141 [debug] [Thread-1 (]: Began executing node model.weather.daily_weather
+[0m08:47:50.674856 [debug] [Thread-1 (]: Writing runtime sql for node "model.weather.daily_weather"
+[0m08:47:50.675630 [debug] [Thread-1 (]: On model.weather.daily_weather: /* {"app": "dbt", "dbt_version": "1.12.5", "profile_name": "weather", "target_name": "dev", "node_id": "model.weather.daily_weather"} */
+
+  
+    
+
+    create or replace table `weatherman-509317`.`weather_analytics`.`daily_weather`
+      
+    
+    
+
+    
+    OPTIONS()
+    as (
+      select
+    city,
+    date(observed_at) as observation_date,
+    round(avg(temperature_c), 1) as avg_temp_c,
+    max(temperature_c) as max_temp_c,
+    min(temperature_c) as min_temp_c,
+    round(sum(precipitation_mm), 1) as total_precip_mm
+from `weatherman-509317`.`weather_analytics`.`stg_weather_hourly`
+group by city, observation_date
+    );
+  
+[0m08:47:50.675962 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m08:47:51.547272 [debug] [Thread-1 (]: BigQuery adapter: https://console.cloud.google.com/bigquery?project=weatherman-509317&j=bq:US:3342ea9c-0299-484f-846a-0494f4e3a4ba&page=queryresults
+[0m08:47:58.885341 [debug] [Thread-1 (]: SQL status: OK in 7.337 seconds
+[0m08:47:59.221316 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '22df7766-2342-430d-b4d3-77ce92ed70b3', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1298ac8f0>]}
+[0m08:47:59.223261 [info ] [Thread-1 (]: 6 of 6 OK created sql table model weather_analytics.daily_weather .............. [[32mCREATE TABLE (12.0 rows, 9.4 KiB processed)[0m in 8.58s]
+[0m08:47:59.226763 [debug] [Thread-1 (]: Finished running node model.weather.daily_weather
+[0m08:47:59.229230 [debug] [MainThread]: Opening a new connection, currently in state closed
+[0m08:47:59.230737 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m08:47:59.231181 [debug] [MainThread]: Connection 'model.weather.daily_weather' was properly closed.
+[0m08:47:59.231613 [debug] [MainThread]: Connection 'test.weather.not_null_stg_weather_hourly_city.45f7d39d17' was properly closed.
+[0m08:47:59.231926 [debug] [MainThread]: Connection 'test.weather.not_null_stg_weather_hourly_observation_key.814aadb9fe' was properly closed.
+[0m08:47:59.232079 [debug] [MainThread]: Connection 'test.weather.not_null_stg_weather_hourly_observed_at.02b583ff1f' was properly closed.
+[0m08:47:59.232374 [info ] [MainThread]: 
+[0m08:47:59.232641 [info ] [MainThread]: Finished running 1 table model, 4 data tests, 1 view model in 0 hours 0 minutes and 14.31 seconds (14.31s).
+[0m08:47:59.233589 [debug] [MainThread]: Command end result
+[0m08:47:59.265373 [debug] [MainThread]: Wrote artifact WritableManifest to dbt_project/target/manifest.json
+[0m08:47:59.268357 [debug] [MainThread]: Wrote artifact SemanticManifest to dbt_project/target/semantic_manifest.json
+[0m08:47:59.270657 [debug] [MainThread]: Wrote artifact OsiDocument to dbt_project/target/osi_document.json
+[0m08:47:59.276520 [debug] [MainThread]: Wrote artifact RunExecutionResult to dbt_project/target/run_results.json
+[0m08:47:59.276784 [info ] [MainThread]: 
+[0m08:47:59.277069 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m08:47:59.277284 [info ] [MainThread]: 
+[0m08:47:59.277536 [info ] [MainThread]: Done. PASS=6 WARN=0 ERROR=0 SKIP=0 NO-OP=0 REUSED=0 TOTAL=6
+[0m08:47:59.447907 [debug] [MainThread]: Resource report: {"command_name": "build", "command_success": true, "command_wall_clock_time": 18.23857, "process_in_blocks": "0", "process_kernel_time": 0.524217, "process_mem_max_rss": "246562816", "process_out_blocks": "0", "process_user_time": 3.231786}
+[0m08:47:59.452222 [debug] [MainThread]: Command `dbt build` succeeded at 08:47:59.451936 after 18.24 seconds
+[0m08:47:59.453267 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x108ef8d40>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x108ef8b90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x108ef8d10>]}
+[0m08:47:59.454041 [debug] [MainThread]: Flushing usage events
+[0m08:47:59.635406 [debug] [MainThread]: An error was encountered while trying to flush usage events
